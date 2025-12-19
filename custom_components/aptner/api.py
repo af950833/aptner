@@ -1,12 +1,15 @@
 from __future__ import annotations
 
 import asyncio
+import logging
 from typing import Any
 
 from aiohttp import ClientResponseError
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 
 from .const import BASE_URL
+
+_LOGGER = logging.getLogger(__name__)
 
 class AptnerError(Exception):
     """Base exception for Aptner."""
@@ -68,14 +71,57 @@ class AptnerClient:
                 return None
 
     async def request(self, method: str, path: str, *, json: dict | None = None) -> Any:
-        """Request with auto re-auth on 401 (same behavior as the pyscript)."""
-        try:
-            return await self._raw_request(method, path, json=json, auth=True)
-        except ClientResponseError as e:
-            if e.status != 401 or path == "/auth/token":
-                raise
-
-        await self.authenticate()
+        """Request with auto re-auth on 401 and retry on other errors."""
+        max_retries = 3
+        base_delay = 1  # 초
+        
+        for attempt in range(max_retries):
+            try:
+                return await self._raw_request(method, path, json=json, auth=True)
+            except ClientResponseError as e:
+                # 401 에러: 인증 갱신 시도
+                if e.status == 401 and path != "/auth/token":
+                    if attempt == 0:  # 첫 번째 시도에서만 인증 갱신
+                        try:
+                            await self.authenticate()
+                        except Exception as auth_error:
+                            _LOGGER.warning("Authentication failed during retry: %s", auth_error)
+                    else:
+                        _LOGGER.warning("401 error persists after re-authentication")
+                    continue
+                # 다른 HTTP 에러나 네트워크 오류
+                elif attempt < max_retries - 1:
+                    delay = base_delay * (2 ** attempt)  # Exponential backoff
+                    _LOGGER.warning(
+                        "Request failed (attempt %d/%d): %s. Retrying in %.1f seconds...",
+                        attempt + 1, max_retries, str(e), delay
+                    )
+                    await asyncio.sleep(delay)
+                    continue
+                else:
+                    _LOGGER.error("Request failed after %d attempts: %s", max_retries, str(e))
+                    raise
+            except Exception as e:  # 네트워크 에러, 타임아웃 등
+                if attempt < max_retries - 1:
+                    delay = base_delay * (2 ** attempt)  # Exponential backoff
+                    _LOGGER.warning(
+                        "Request failed (attempt %d/%d): %s. Retrying in %.1f seconds...",
+                        attempt + 1, max_retries, str(e), delay
+                    )
+                    await asyncio.sleep(delay)
+                    continue
+                else:
+                    _LOGGER.error("Request failed after %d attempts: %s", max_retries, str(e))
+                    raise
+        
+        # 마지막 재시도 후 인증 갱신 시도 (401이 아니더라도)
+        if path != "/auth/token":
+            try:
+                await self.authenticate()
+            except Exception as auth_error:
+                _LOGGER.warning("Final authentication attempt failed: %s", auth_error)
+        
+        # 마지막 시도
         return await self._raw_request(method, path, json=json, auth=True)
 
     # ---- High-level API (mirrors pyscript services) ----
