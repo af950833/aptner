@@ -63,7 +63,7 @@ class AptnerOptionsFlowHandler(config_entries.OptionsFlow):
                 
                 # Validate scan interval
                 scan_interval = int(user_input.get(CONF_SCAN_INTERVAL_MIN, DEFAULT_SCAN_INTERVAL_MIN))
-                if not (2 <= scan_interval <= 1440):
+                if not (5 <= scan_interval <= 1440):
                     errors[CONF_SCAN_INTERVAL_MIN] = "invalid_interval"
                 
                 if not errors:
@@ -102,7 +102,7 @@ class AptnerOptionsFlowHandler(config_entries.OptionsFlow):
                 vol.Optional(CONF_CARS, default=cars_str): str,
                 vol.Optional(CONF_SCAN_INTERVAL_MIN, default=scan_interval): vol.All(
                     vol.Coerce(int), 
-                    vol.Range(min=2, max=1440)
+                    vol.Range(min=5, max=1440)
                 ),
             }
         )
