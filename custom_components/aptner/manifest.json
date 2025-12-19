@@ -1,11 +1,11 @@
 {
   "domain": "aptner",
   "name": "Aptner",
-  "version": "0.3.0",
-  "documentation": "https://example.invalid",
-  "issue_tracker": "https://example.invalid/issues",
+  "version": "1.0.0",
+  "documentation": "https://github.com/af950833/aptner",
+  "issue_tracker": "https://github.com/af950833/aptner/issues",
   "requirements": [],
-  "codeowners": [],
+  "codeowners": ["@af950833"],
   "config_flow": true,
   "iot_class": "cloud_polling",
   "integration_type": "service"
