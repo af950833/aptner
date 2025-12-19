@@ -1,8 +1,6 @@
-# aptner
-
 ![Aptner Logo](images/logo.png)
 
-# Aptner Home Assistant 통합
+# Aptner Home Assistant Custom Component
 
 **Aptner(아파트너) v2 API**를 사용하는 Home Assistant 커스텀 통합입니다.  
 아파트 주차 관련 정보를 Home Assistant에서 **센서·디바이스 트래커·서비스** 형태로 확인하고 일부 기능을 제어할 수 있습니다.
