@@ -114,3 +114,6 @@ https://github.com/af950833/aptner
 ### 관리비 확인
 ![Aptner Fee](images/fee.png)
 
+### Version History
+25/12/19 1.0.0 Initial Release
+
