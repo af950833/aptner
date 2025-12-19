@@ -106,11 +106,11 @@ https://github.com/af950833/aptner
 
 ### 차량 예약
 ```yaml
-service: aptner.reserve_car
+action: aptner.reserve_car
 data:
-date: "2025.01.15"
-purpose: "출장"
-carno: "12가3456"
-days: 2
-phone: "01012345678"
+  purpose: 지인/가족방문
+  carno: 123가5678
+  days: 1
+  phone: 010-1234-5678
+  date: "2025-12-20"
 
