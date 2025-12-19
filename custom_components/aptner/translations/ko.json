@@ -1,0 +1,28 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Aptner",
+        "description": "아파트너 계정 정보를 입력하세요.",
+        "data": {
+          "id": "아이디",
+          "password": "비밀번호"
+        }
+      }
+    },
+    "error": {
+      "auth_failed": "로그인(토큰 발급)에 실패했습니다. 아이디/비밀번호를 확인하세요."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "옵션",
+        "data": {
+          "cars": "차량번호 목록(쉼표로 구분)",
+          "scan_interval_minutes": "갱신 주기(분)"
+        }
+      }
+    }
+  }
+}
