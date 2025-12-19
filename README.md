@@ -80,8 +80,8 @@ https://github.com/af950833/aptner
 - **갱신 주기**
 - 최소: 5분
 - 최대: 1440분
-![Aptner Option](images/option.png)
 ---
+![Aptner Option](images/option.png)
 
 ## 생성되는 엔티티
 
