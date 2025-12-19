@@ -88,7 +88,7 @@ https://github.com/af950833/aptner
 ### 센서
 | 엔티티 | 설명 |
 |------|------|
-| `sensor.aptner_fee` | 현재 주차 요금 |
+| `sensor.aptner_fee` | 최근 관리비 |
 | `sensor.aptner_reserve` | 향후 예약 차량 수 |
 
 ### 디바이스 트래커
