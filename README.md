@@ -27,7 +27,7 @@ Home Assistant - Aptner Component
   - `not_home` : 외출 중(출차 상태)
 - 추가 속성:
   - 차량 번호
-  - 상태(`in`, `out`, `not_found`)
+  - 상태(`in`, `out`)
   - 입차/출차 일시
 
 ### 서비스(Service)
