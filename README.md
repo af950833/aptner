@@ -54,8 +54,7 @@
 1. **HACS** 열기
 2. **통합(Integrations)** 메뉴 이동
 3. 우측 상단 **⋮ → 사용자 정의 저장소**
-4. 아래 저장소 추가
-https://github.com/af950833/aptner
+4. 저장소 추가(https://github.com/af950833/aptner)
 5. 카테고리: **Integration**
 6. **Aptner** 설치
 7. Home Assistant 재시작
@@ -88,7 +87,7 @@ https://github.com/af950833/aptner
 | 엔티티 | 설명 |
 |------|------|
 | `sensor.aptner_fee` | 최근 관리비 |
-| `sensor.aptner_reserve` | 향후 예약 차량 수 |
+| `sensor.aptner_reserve` | 예약 차량 수 |
 
 ### 디바이스 트래커
 | 엔티티 | 설명 |
