@@ -38,7 +38,7 @@ Home Assistant - Aptner Component
 - `aptner.get_car_status`  
   → 현재 차량 주차 상태 조회
 - `aptner.get_reserve_status`  
-  → 향후 예약 현황 조회
+  → 차량 예약 현황 조회
 - `aptner.reserve_car`  
   → 차량 예약 등록
 
