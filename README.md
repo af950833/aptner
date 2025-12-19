@@ -96,7 +96,7 @@ https://github.com/af950833/aptner
 ### 디바이스 트래커
 | 엔티티 | 설명 |
 |------|------|
-| `device_tracker.aptner_차량번호` | 차량 주차 상태 |
+| `device_tracker.aptner_차량번호` | 차량 주차 상태(Home/Not_home) |
 
 ---
 
