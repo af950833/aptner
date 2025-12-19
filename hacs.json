@@ -1,0 +1,7 @@
+{
+  "name": "Aptner",
+  "country": "KR",
+  "domains": ["sensor","device_tracker"],
+  "render_readme": true,
+  "icons": ["images/logo.png"]
+}
