@@ -101,12 +101,5 @@ https://github.com/af950833/aptner
 ## 서비스 사용 예시
 
 ### 차량 예약
-```yaml
-action: aptner.reserve_car
-data:
-  purpose: 지인/가족방문
-  carno: 123가5678
-  days: 1
-  phone: 010-1234-5678
-  date: "2025-12-20"
+![Aptner Reserve](images/reserve.png)
 
