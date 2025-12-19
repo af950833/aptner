@@ -1,0 +1,28 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Aptner",
+        "description": "Enter your Aptner credentials.",
+        "data": {
+          "id": "ID",
+          "password": "Password"
+        }
+      }
+    },
+    "error": {
+      "auth_failed": "Authentication failed."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Options",
+        "data": {
+          "cars": "Car numbers (comma separated)",
+          "scan_interval_minutes": "Scan interval (minutes)"
+        }
+      }
+    }
+  }
+}

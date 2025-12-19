@@ -1,0 +1,12 @@
+{
+  "domain": "aptner",
+  "name": "Aptner",
+  "version": "0.3.0",
+  "documentation": "https://example.invalid",
+  "issue_tracker": "https://example.invalid/issues",
+  "requirements": [],
+  "codeowners": [],
+  "config_flow": true,
+  "iot_class": "cloud_polling",
+  "integration_type": "service"
+}
