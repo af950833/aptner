@@ -1,7 +1,7 @@
 {
   "domain": "aptner",
   "name": "Aptner",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "documentation": "https://github.com/af950833/aptner",
   "issue_tracker": "https://github.com/af950833/aptner/issues",
   "requirements": [],
