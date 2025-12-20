@@ -231,7 +231,7 @@ class AptnerClient:
                     visit_date = datetime.strptime(visit_date_str, "%Y.%m.%d").date()
                 except Exception:
                     continue
-                if today < visit_date:
+                if today <= visit_date:
                     car_no = item.get("carNo")
                     if not car_no:
                         continue
