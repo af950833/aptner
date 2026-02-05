@@ -108,7 +108,7 @@ def _device_info(entry: ConfigEntry, carno: str) -> DeviceInfo:
 class AptnerCarTracker(CoordinatorEntity, TrackerEntity):
     """Device tracker for Aptner cars."""
     
-    _attr_has_entity_name = True
+    _attr_has_entity_name = False
     _attr_icon = "mdi:car"
     _attr_should_poll = False  # coordinator가 업데이트를 처리하므로 False
 
@@ -118,28 +118,14 @@ class AptnerCarTracker(CoordinatorEntity, TrackerEntity):
         self._entry = entry
         self._carno = carno
         
-        # entity_id가 중복되지 않도록 설정
-        # 방법 1: name을 비워두고 has_entity_name=True 사용
-        self._attr_name = None  # 비워둠
-        self._attr_has_entity_name = False  # False로 설정
-        
-        # 방법 2: 명시적으로 name 설정
-        # self._attr_name = f"Aptner {carno}"
-        
-        # unique_id는 필수
         self._attr_unique_id = f"{entry.entry_id}_tracker_{carno}"
         self._attr_device_info = _device_info(entry, carno)
         
-        # entity_id를 명시적으로 설정 (선택사항)
-        # device_tracker는 entity_id가 중요하므로 명시적으로 설정
-        self.entity_id = f"device_tracker.aptner_{carno}"
-
-    @property
-    def name(self) -> str:
-        """Return the name of the device."""
-        # device_info의 name을 반환하거나 간단한 이름 설정
-        return f"Aptner {self._carno}"
-
+        self._attr_name = f"Aptner {carno}"
+        
+        self._attr_unique_id = f"{entry.entry_id}_tracker_{carno}"
+        self._attr_device_info = _device_info(entry, carno)
+        
     @property
     def source_type(self) -> str:
         """Return the source type of the device."""
@@ -188,4 +174,5 @@ class AptnerCarTracker(CoordinatorEntity, TrackerEntity):
         if car_data.get("outDatetime"):
             attributes["out_datetime"] = car_data.get("outDatetime")
         
+
         return attributes
