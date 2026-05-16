@@ -108,7 +108,8 @@ def _device_info(entry: ConfigEntry, carno: str) -> DeviceInfo:
 class AptnerCarTracker(CoordinatorEntity, TrackerEntity):
     """Device tracker for Aptner cars."""
     
-    _attr_has_entity_name = False
+    _attr_has_entity_name = True
+    _attr_name = None
     _attr_icon = "mdi:car"
     _attr_should_poll = False  # coordinator가 업데이트를 처리하므로 False
 
@@ -117,11 +118,6 @@ class AptnerCarTracker(CoordinatorEntity, TrackerEntity):
         super().__init__(coordinator)
         self._entry = entry
         self._carno = carno
-        
-        self._attr_unique_id = f"{entry.entry_id}_tracker_{carno}"
-        self._attr_device_info = _device_info(entry, carno)
-        
-        self._attr_name = f"Aptner {carno}"
         
         self._attr_unique_id = f"{entry.entry_id}_tracker_{carno}"
         self._attr_device_info = _device_info(entry, carno)
